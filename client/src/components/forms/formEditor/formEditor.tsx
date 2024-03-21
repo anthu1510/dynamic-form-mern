@@ -124,13 +124,7 @@ const FormEditor: React.FC<IFormEditorProps> = ({ formfields, setFormFields }) =
                   onChange={() => handleCheckboxChange(index, option)}
                 />
                 <label className="form-check-label" htmlFor={option}>
-                  <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Question"
-                      value={option}
-                      onChange={() => handleCheckboxChange(index, option)}
-                  />
+                  {option}
                 </label>
               </div>
             ))}
@@ -210,8 +204,6 @@ const FormEditor: React.FC<IFormEditorProps> = ({ formfields, setFormFields }) =
               </div>
               <div className="row">
                 {dropdown.value !== "" && dynamicInputRender(index, field)}
-                {/* {index === } */}
-                {/* {dynamicInputRender(index, field)} */}
               </div>
             </div>
           </div>
