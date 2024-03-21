@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { IFormAdd } from "../../../types/form.type";
+import FormEditor from "../formEditor/formEditor";
 
 const intitalState = {
     title: "Untitled form",
     description: "Form Description",
-    fields: []
+    fields: [
+        { type: "text", label: "Text Field", value: "" },
+    ]
 }
+
+
 
 
 const AddForm = () => {
@@ -47,6 +52,7 @@ const AddForm = () => {
                             onChange={(e) => handleInputChange(e)}
                         />
                     </div>
+                    <FormEditor formfields={formData} setFormFields={setFormData}/>
                 </div>
             </div>
         </div>

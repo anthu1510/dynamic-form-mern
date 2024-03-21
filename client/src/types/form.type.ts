@@ -12,3 +12,8 @@ export interface IFormAdd {
     description?: string;
     fields: IFormField[]
 }
+
+export interface IFormEditorProps {
+    formfields: IFormAdd,
+    setFormFields: (newFormField: IFormAdd) => void
+}
