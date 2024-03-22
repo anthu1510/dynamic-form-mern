@@ -1,22 +1,18 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FormPage from "./components/forms/formPage/formPage";
 import AddForm from "./components/forms/addForm/addForm";
+import FormPreview from "./components/forms/formPreview/formPreview";
 
 function App() {
-  const [formData, setFormData] = useState({});
-
-  
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-4 mt-3">
-          <button className="btn btn-primary mx-3">Add Form</button>
-          <button className="btn btn-info">Preview Form</button>
-        </div>
-      </div>
-      <div className="row">
-        <AddForm />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<FormPage/>}>
+            <Route path="add" element={<AddForm/>}/>
+            <Route path="preview" element={<FormPreview/>}/>
+          </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

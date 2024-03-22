@@ -66,18 +66,28 @@ const FormEditor: React.FC<IFormEditorProps> = ({ formfields, setFormFields }) =
   };
 
   const handleFieldsChange = (index: number, value: string) => {
-    setDropDown({ index, value })
+    const newFormFields = [...formfields.fields];
+    setDropDown({ index, value });
+    let newfield: IFormField;
     if (value === 'checkbox') {
-      const newFormFields = [...formfields.fields];
-      const newheckboxfield = {
+      newfield = {
         type: "checkbox",
         label: "Checkbox Field",
         options: ["Option 1", "Option 2"],
         selectedOptions: [],
       }
-      newFormFields[index] = newheckboxfield;
+      newFormFields[index] = newfield;
       setFormFields({ ...formfields, fields: newFormFields });
-    }
+    } else if(value === 'radio') {
+      newfield =  {
+            type: "radio",
+            label: "Radio Field",
+            options: ["Option 1"],
+            selectedOption: "",
+          },
+          newFormFields[index] = newfield;
+          setFormFields({ ...formfields, fields: newFormFields });
+    } 
   };
 
 
@@ -203,7 +213,7 @@ const FormEditor: React.FC<IFormEditorProps> = ({ formfields, setFormFields }) =
                 </div>
               </div>
               <div className="row">
-                {dropdown.value !== "" && dynamicInputRender(index, field)}
+                {dropdown.index === index && dropdown.value !== "" && dynamicInputRender(index, field)}
               </div>
             </div>
           </div>
